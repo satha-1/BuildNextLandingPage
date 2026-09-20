@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#04111D"/>
+  <g opacity="0.35" stroke="#0A9D91" stroke-width="1">
+    <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200"/>
+    <path d="M150 0v630M300 0v630M450 0v630M600 0v630M750 0v630M900 0v630M1050 0v630"/>
+  </g>
+  <path d="M80 540 C 280 420 420 380 600 300 S 980 160 1140 80" stroke="#41D9D0" stroke-width="3" fill="none"/>
+  <text x="80" y="520" fill="#F5F7F5" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="48" font-weight="600">BuildNext Lands</text>
+</svg>
