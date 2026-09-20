@@ -8,7 +8,7 @@ export const serviceImages = {
   implementation: unsplash('photo-1552664730-d307ca884978', 1000),
   cloud: unsplash('photo-1451187580459-43490279c0fa', 1000),
   support: unsplash('photo-1522071820081-009f0129c71c', 1000),
-  integrations: unsplash('photo-1460925895917-afdab827c52f', 1200),
+  integrations: '/images/services-integrations.jpg',
   process: unsplash('photo-1503387762-592deb58ef4e', 1200),
 } as const
 
