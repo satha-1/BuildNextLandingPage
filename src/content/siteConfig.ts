@@ -53,6 +53,8 @@ export const siteConfig = {
   whatsapp: CONTACT_WHATSAPP,
   whatsappDisplay: CONTACT_WHATSAPP_DISPLAY,
   whatsappUrl: CONTACT_WHATSAPP_URL,
+  seoKeywords:
+    'BuildNext360, land sales ERP, construction ERP, property CRM, real estate software, plot management, construction project management, installment collections, QuickBooks integration, HRIS integration, business chatbot',
   demoAppConfigured: DEMO_APP_URL !== '#' && DEMO_APP_URL.trim().length > 0,
   demoApiConfigured: DEMO_API_URL.trim().length > 0,
 } as const

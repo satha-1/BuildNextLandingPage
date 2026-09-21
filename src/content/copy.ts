@@ -133,6 +133,7 @@ export type RouteSeo = {
   path: string
   title: string
   description: string
+  keywords?: string
 }
 
 export const routeSeo: Record<string, RouteSeo> = {
@@ -141,35 +142,43 @@ export const routeSeo: Record<string, RouteSeo> = {
     title: 'BuildNext360 | ERP & CRM for Property, Land & Construction',
     description:
       'ERP & CRM software for land selling companies, property developers, real estate businesses, and construction companies. Digitize sales, projects, operations, and finance through industry-focused enterprise software.',
+    keywords:
+      'BuildNext360, property ERP, land sales CRM, construction ERP, real estate software Sri Lanka',
   },
   '/lands': {
     path: '/lands',
     title: 'BuildNext Lands | Land Sales ERP & CRM',
     description:
       'Land sales ERP and CRM for property developers and land selling companies. Manage leads, reservations, agreements, installments, commissions, and deed processing.',
+    keywords: 'land sales ERP, plot inventory software, land CRM, deed processing software',
   },
   '/construction': {
     path: '/construction',
     title: 'BuildNext Construction | Construction ERP & CRM',
     description:
       'Construction ERP and CRM for project-driven businesses. Manage planning, procurement, execution, cost control, billing, and handover.',
+    keywords: 'construction ERP, project cost control software, construction CRM, site operations software',
   },
   '/book-demo': {
     path: '/book-demo',
     title: 'Book a Demo | BuildNext360 ERP & CRM',
     description:
       'Request a personalized BuildNext360 demonstration mapped to how your company manages sales, projects, contracts, collections, and site operations.',
+    keywords: 'BuildNext360 demo, land ERP demo, construction software demo',
   },
   '/contact': {
     path: '/contact',
     title: 'Contact | BuildNext360 ERP & CRM',
     description:
-      'Contact the BuildNext360 team about land sales ERP, construction ERP, demos, implementation, and product questions for property and construction businesses.',
+      'Contact the BuildNext360 team about land sales ERP, construction ERP, demos, implementation, chatbot, and product questions for property and construction businesses.',
+    keywords: 'contact BuildNext360, land ERP support, construction ERP sales',
   },
   '/services': {
     path: '/services',
-    title: 'Services | Implementation, Integrations & Support | BuildNext360',
+    title: 'Services | Implementation, Chatbot, Integrations & Support | BuildNext360',
     description:
-      'BuildNext360 services include implementation, AWS and Azure cloud integration, up to 2 months of free technical support, and paid add-on integrations such as QuickBooks and HRIS when needed.',
+      'BuildNext360 services include implementation, AWS and Azure cloud integration, chatbot setup, up to 2 months of free technical support, and paid add-on integrations such as QuickBooks and HRIS when needed.',
+    keywords:
+      'BuildNext360 implementation, ERP chatbot, AWS Azure integration, QuickBooks HRIS integration, technical support',
   },
 }

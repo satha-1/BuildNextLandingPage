@@ -1,4 +1,3 @@
-import { JsonLd } from '../components/seo/JsonLd'
 import { Seo } from '../components/seo/Seo'
 import { FeatureShowcaseSection } from '../components/product/FeatureShowcase'
 import {
@@ -14,7 +13,6 @@ export default function HomePage() {
   return (
     <>
       <Seo path="/" />
-      <JsonLd includeFaq />
       <HomeHero />
       <IndustrySolutionsSection />
       <WhyIndustrySection />
