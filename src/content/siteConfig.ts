@@ -25,7 +25,7 @@ function formatPhoneDisplay(phone: string): string {
 
 export const DEMO_APP_URL = import.meta.env.VITE_DEMO_APP_URL || '#'
 export const DEMO_API_URL = resolveDemoApiUrl(import.meta.env.VITE_DEMO_API_URL)
-export const SITE_URL = trimEnv(import.meta.env.VITE_SITE_URL || 'https://buildnext360.com').replace(
+export const SITE_URL = trimEnv(import.meta.env.VITE_SITE_URL || 'https://www.buildnext360.com').replace(
   /\/$/,
   '',
 )
