@@ -7,6 +7,7 @@ import {
 } from '../../content/homeContent'
 import { screenshots } from '../../content/screenshots'
 import { cn } from '../../lib/cn'
+import { BrandLogo } from '../brand/BrandLogo'
 import { ButtonLink } from '../ui/Button'
 import { Container, sectionGap, sectionY, SectionHeading } from '../ui/Container'
 import { FeatureCarousel } from '../ui/FeatureCarousel'
@@ -216,11 +217,15 @@ export function FinalCta() {
         aria-hidden
       />
       <Container className="relative text-center">
+        <div className="mx-auto mb-8 flex justify-center">
+          <BrandLogo variant="horizontal" className="mx-auto h-12 sm:h-14" imgClassName="mx-auto h-12 sm:h-14" />
+        </div>
         <h2 className="mx-auto max-w-4xl font-display text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
           Modern ERP &amp; CRM Software for Growing Property and Construction Businesses
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-base text-white/70 sm:text-lg">
-          See how BuildNext360 can fit your business operations.
+          See how BuildNext360 can fit your business operations — including optional chatbot support
+          for customers and teams.
         </p>
         <div className="mt-10">
           <ButtonLink to="/book-demo">Book a Personalized Demo</ButtonLink>

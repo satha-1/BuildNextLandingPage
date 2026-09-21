@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Mail, Phone } from 'lucide-react'
 import { footerNav } from '../../content/navigation'
 import { siteConfig, targetIndustries } from '../../content/siteConfig'
+import { BrandLogo } from '../brand/BrandLogo'
 import { Container } from '../ui/Container'
 import { ButtonLink } from '../ui/Button'
 import { WhatsAppIcon } from '../ui/WhatsAppIcon'
@@ -17,15 +18,7 @@ export function SiteFooter() {
     <footer className="border-t border-navy/[0.06] bg-white text-navy">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <span
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy text-[11px] font-bold text-white"
-              aria-hidden
-            >
-              B
-            </span>
-            <p className="font-display text-sm font-semibold">{siteConfig.productName}</p>
-          </div>
+          <BrandLogo variant="mark" />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
             {siteConfig.positioning}
           </p>

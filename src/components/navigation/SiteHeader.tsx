@@ -2,8 +2,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../../content/navigation'
-import { siteConfig } from '../../content/siteConfig'
 import { cn } from '../../lib/cn'
+import { BrandLogo } from '../brand/BrandLogo'
 import { ButtonLink } from '../ui/Button'
 import { Container } from '../ui/Container'
 
@@ -37,15 +37,9 @@ export function SiteHeader() {
       <Container className="flex h-[4.25rem] items-center justify-between gap-6">
         <Link
           to="/"
-          className="group flex shrink-0 items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+          className="group shrink-0 transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
         >
-          <span
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy text-[11px] font-bold text-white transition-transform duration-200 group-hover:scale-105"
-            aria-hidden
-          >
-            B
-          </span>
-          <span className="font-display text-[15px] font-semibold text-navy">{siteConfig.productName}</span>
+          <BrandLogo variant="mark" priority />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

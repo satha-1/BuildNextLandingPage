@@ -1,8 +1,9 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ChevronDown, Cloud, Headphones, Link2, Rocket } from 'lucide-react'
+import { Bot, ChevronDown, Cloud, Headphones, Link2, Rocket } from 'lucide-react'
 import { useState } from 'react'
 import { FinalCta } from '../components/product/HomeSections'
 import { Seo } from '../components/seo/Seo'
+import { BrandLogo } from '../components/brand/BrandLogo'
 import { ButtonLink } from '../components/ui/Button'
 import { Container, sectionGap, sectionY, SectionHeading } from '../components/ui/Container'
 import { FadeIn, Stagger, StaggerItem } from '../components/ui/Motion'
@@ -21,6 +22,7 @@ const offeringIcons = {
   implementation: Rocket,
   'cloud-integration': Cloud,
   support: Headphones,
+  chatbot: Bot,
 } as const
 
 function ServiceFaqAccordion() {
@@ -104,13 +106,20 @@ export default function ServicesPage() {
             <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
               Services
             </span>
+            <div className="mt-5">
+              <BrandLogo
+                variant="stacked"
+                className="h-14 sm:h-16"
+                imgClassName="h-14 rounded-xl sm:h-16"
+              />
+            </div>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-[3.25rem]">
-              Implementation, integrations, and support for BuildNext360
+              Implementation, integrations, chatbot, and support for BuildNext360
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
               Configure the platform around your operation, stabilize adoption with up to 2 months
-              of free technical support, and add paid integrations like QuickBooks or HRIS only when
-              you need them.
+              of free technical support, add a chatbot for faster customer and team answers, and
+              layer paid integrations like QuickBooks or HRIS only when you need them.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ButtonLink to="/book-demo">Discuss your rollout</ButtonLink>
@@ -151,11 +160,11 @@ export default function ServicesPage() {
             <SectionHeading
               eyebrow="What we offer"
               title="Services that get you live — and keep you moving"
-              copy="Implementation, AWS/Azure cloud integration, and free post-go-live support are available now. Third-party tool integrations like QuickBooks and HRIS are paid add-ons when needed."
+              copy="Implementation, AWS/Azure cloud integration, chatbot, and free post-go-live support are available now. Third-party tool integrations like QuickBooks and HRIS are paid add-ons when needed."
             />
           </FadeIn>
 
-          <Stagger className={cn(sectionGap, 'grid min-w-0 items-stretch gap-6 lg:grid-cols-3')}>
+          <Stagger className={cn(sectionGap, 'grid min-w-0 items-stretch gap-6 sm:grid-cols-2')}>
             {serviceOfferings.map((offering) => {
               const Icon = offeringIcons[offering.id]
               return (

@@ -8,6 +8,7 @@ export const serviceImages = {
   implementation: unsplash('photo-1552664730-d307ca884978', 1000),
   cloud: unsplash('photo-1451187580459-43490279c0fa', 1000),
   support: unsplash('photo-1522071820081-009f0129c71c', 1000),
+  chatbot: '/images/services-chatbot.jpg',
   integrations: '/images/services-integrations.jpg',
   process: unsplash('photo-1503387762-592deb58ef4e', 1200),
 } as const
@@ -15,7 +16,7 @@ export const serviceImages = {
 export type ServiceStatus = 'available' | 'coming'
 
 export const serviceOfferings: Array<{
-  id: 'implementation' | 'cloud-integration' | 'support'
+  id: 'implementation' | 'cloud-integration' | 'support' | 'chatbot'
   status: ServiceStatus
   title: string
   summary: string
@@ -66,6 +67,21 @@ export const serviceOfferings: Array<{
       'Guidance for sales, finance, and operations teams during early adoption',
       'Priority handling for blockers that affect collections or inventory',
       'Free support window of up to 2 months from go-live or service start',
+    ],
+  },
+  {
+    id: 'chatbot',
+    status: 'available',
+    title: 'Chatbot Service',
+    summary:
+      'Add an AI-assisted chatbot to BuildNext360 so customers and internal teams get faster answers on plots, projects, payments, and common operational questions.',
+    image: serviceImages.chatbot,
+    imageAlt: 'Laptop and phone showing a business chatbot conversation',
+    points: [
+      'Customer-facing answers for availability, installment, and status questions',
+      'Internal help for sales and operations teams on process and product usage',
+      'Configured to your BuildNext Lands or Construction workflows',
+      'Scoped as a service add-on and delivered with your rollout or after go-live',
     ],
   },
 ]
@@ -214,8 +230,13 @@ export const serviceFaqs = [
       'You can continue with an ongoing support arrangement if needed, or operate independently with your trained administrators. We discuss options before the free window closes so there is no surprise gap.',
   },
   {
+    question: 'Do you provide a chatbot?',
+    answer:
+      'Yes. Chatbot is available as a BuildNext360 service. We configure it for customer or internal use cases — such as plot or project questions, payment status, and common process guidance — and scope it alongside your implementation or as a follow-on engagement.',
+  },
+  {
     question: 'How do we get started?',
     answer:
-      'Book a demo or contact the team with your company type, current tools, and priority workflows. We will recommend the right product mix, implementation scope, and whether any paid integrations are needed.',
+      'Book a demo or contact the team with your company type, current tools, and priority workflows. We will recommend the right product mix, implementation scope, chatbot needs, and whether any paid integrations are needed.',
   },
 ] as const
