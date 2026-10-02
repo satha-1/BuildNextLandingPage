@@ -42,11 +42,12 @@ export function ButtonLink({
   className,
   variant = 'primary',
   external,
-}: Shared & { to: string; external?: boolean }) {
+  newTab,
+}: Shared & { to: string; external?: boolean; newTab?: boolean }) {
   const classNames = cn(base, styles[variant], className)
   if (external) {
     return (
-      <a href={to} className={classNames}>
+      <a href={to} className={classNames} {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         {children}
       </a>
     )

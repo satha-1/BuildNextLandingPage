@@ -1,4 +1,6 @@
+import { FileDown } from 'lucide-react'
 import { ButtonLink } from '../components/ui/Button'
+import { siteConfig } from '../content/siteConfig'
 import { PageHero } from '../components/ui/Container'
 import { ProductWorkflowSection } from '../components/product/WorkflowShowcase'
 import { FinalCta } from '../components/product/HomeSections'
@@ -16,9 +18,15 @@ export default function LandsPage() {
         image={stockImages.landsProduct}
         imageAlt="Property development and land sales operations"
       >
-        <ButtonLink to="/book-demo" variant="on-light">
-          Book a Demo
-        </ButtonLink>
+        <div className="flex flex-wrap gap-3">
+          <ButtonLink to="/book-demo" variant="on-light">
+            Book a Demo
+          </ButtonLink>
+          <ButtonLink to={siteConfig.brochureUrl} external newTab variant="secondary">
+            <FileDown className="h-4 w-4" aria-hidden />
+            Download Brochure
+          </ButtonLink>
+        </div>
       </PageHero>
 
       <ProductWorkflowSection

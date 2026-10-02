@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone } from 'lucide-react'
+import { FileDown, Mail, Phone } from 'lucide-react'
 import { footerNav } from '../../content/navigation'
 import { siteConfig, targetIndustries } from '../../content/siteConfig'
 import { BrandLogo } from '../brand/BrandLogo'
@@ -53,10 +53,32 @@ export function SiteFooter() {
               </a>
             ) : null}
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink to="/book-demo" variant="on-light">
               Book a Demo
             </ButtonLink>
+            <ButtonLink to={siteConfig.brochureUrl} external newTab variant="secondary">
+              <FileDown className="h-4 w-4" aria-hidden />
+              Brochure
+            </ButtonLink>
+          </div>
+          <div className="mt-5 flex items-center gap-4 text-sm">
+            <a
+              href={siteConfig.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-muted transition-colors hover:text-teal"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={siteConfig.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-muted transition-colors hover:text-teal"
+            >
+              Facebook
+            </a>
           </div>
         </div>
         <div>

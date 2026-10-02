@@ -53,6 +53,9 @@ export const siteConfig = {
   whatsapp: CONTACT_WHATSAPP,
   whatsappDisplay: CONTACT_WHATSAPP_DISPLAY,
   whatsappUrl: CONTACT_WHATSAPP_URL,
+  brochureUrl: '/BuildNext360-Brochure.pdf',
+  linkedinUrl: 'https://www.linkedin.com/company/buildnext360',
+  facebookUrl: 'https://www.facebook.com/share/14qKzjwonEV/',
   seoKeywords:
     'BuildNext360, land sales ERP, construction ERP, property CRM, real estate software, plot management, construction project management, installment collections, QuickBooks integration, HRIS integration, business chatbot',
   demoAppConfigured: DEMO_APP_URL !== '#' && DEMO_APP_URL.trim().length > 0,
