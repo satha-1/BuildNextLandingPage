@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '../../lib/cn'
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'on-light'
+type Variant = 'primary' | 'secondary' | 'ghost' | 'on-light' | 'on-dark'
 
 type Shared = {
   children: ReactNode
@@ -18,6 +18,8 @@ const styles: Record<Variant, string> = {
   ghost: 'text-muted hover:bg-navy/[0.04] hover:text-navy',
   'on-light':
     'bg-navy text-white shadow-[0_1px_2px_rgb(10_22_40/20%)] hover:bg-navy/90 hover:shadow-[0_8px_24px_-8px_rgb(10_22_40/35%)] focus-visible:outline-teal',
+  'on-dark':
+    'border border-white/20 bg-white/5 text-white hover:bg-white/10 focus-visible:outline-teal',
 }
 
 const base =

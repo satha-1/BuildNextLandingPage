@@ -16,9 +16,7 @@ export default function ConstructionPage() {
         image={stockImages.constructionProduct}
         imageAlt="Construction project site operations"
       >
-        <ButtonLink to="/book-demo" variant="on-light">
-          Book a Demo
-        </ButtonLink>
+        <ButtonLink to="/book-demo">Book a Demo</ButtonLink>
       </PageHero>
 
       <ProductWorkflowSection

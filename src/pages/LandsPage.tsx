@@ -19,10 +19,8 @@ export default function LandsPage() {
         imageAlt="Property development and land sales operations"
       >
         <div className="flex flex-wrap gap-3">
-          <ButtonLink to="/book-demo" variant="on-light">
-            Book a Demo
-          </ButtonLink>
-          <ButtonLink to={siteConfig.brochureUrl} external newTab variant="secondary">
+          <ButtonLink to="/book-demo">Book a Demo</ButtonLink>
+          <ButtonLink to={siteConfig.brochureUrl} external newTab variant="on-dark">
             <FileDown className="h-4 w-4" aria-hidden />
             Download Brochure
           </ButtonLink>

@@ -16,22 +16,24 @@ import { StockImage } from '../ui/StockImage'
 
 export function HomeHero() {
   return (
-    <section className="page-hero-bg border-b border-navy/[0.06]">
-      <Container className="py-16 sm:py-20">
+    <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_90%_10%,rgb(13_148_136/25%),transparent)]"
+        aria-hidden
+      />
+      <Container className="relative py-16 sm:py-20">
         <div className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0">
-            <h1 className="font-display text-[2.125rem] font-semibold leading-[1.08] text-navy sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="font-display text-[2.125rem] font-semibold leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]">
               ERP &amp; CRM Software Built for Property, Land &amp; Construction Businesses
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
               Digitize sales, projects, customer management, operations, finance, and business
               workflows through industry-focused enterprise software.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink to="/book-demo" variant="on-light">
-                Book a Demo
-              </ButtonLink>
-              <ButtonLink to="/#solutions" variant="secondary">
+              <ButtonLink to="/book-demo">Book a Demo</ButtonLink>
+              <ButtonLink to="/#solutions" variant="on-dark">
                 Explore Solutions
               </ButtonLink>
             </div>
@@ -40,12 +42,12 @@ export function HomeHero() {
               {heroMetrics.map((metric) => (
                 <div
                   key={metric.id}
-                  className="rounded-2xl border border-navy/[0.06] bg-white p-5 shadow-[var(--shadow-soft)]"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
                 >
-                  <p className="font-display text-3xl font-semibold tracking-tight text-teal sm:text-[2.15rem]">
+                  <p className="font-display text-3xl font-semibold tracking-tight text-teal-light sm:text-[2.15rem]">
                     {metric.value}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{metric.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">{metric.description}</p>
                 </div>
               ))}
             </div>

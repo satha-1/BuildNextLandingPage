@@ -11,7 +11,7 @@ export function Container({
   as?: 'div' | 'section' | 'header' | 'footer' | 'nav'
 }) {
   return (
-    <Tag className={cn('mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12', className)}>{children}</Tag>
+    <Tag className={cn('mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 2xl:max-w-[max(80rem,78vw)]', className)}>{children}</Tag>
   )
 }
 
@@ -84,21 +84,29 @@ export function PageHero({
   imageAlt: string
 }) {
   return (
-    <section className="page-hero-bg border-b border-navy/[0.06]">
-      <Container className="py-16 sm:py-20">
+    <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_90%_10%,rgb(13_148_136/25%),transparent)]"
+        aria-hidden
+      />
+      <Container className="relative py-16 sm:py-20">
         <div className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0">
-            <span className="inline-flex rounded-full bg-teal/[0.08] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-teal">
+            <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
               {eyebrow}
             </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-navy sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-[3.25rem]">
               {title}
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{copy}</p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">{copy}</p>
             {children ? <div className="mt-9">{children}</div> : null}
           </div>
           <div className="relative min-w-0">
-            <div className="overflow-hidden rounded-2xl shadow-[var(--shadow-lift)] ring-1 ring-navy/[0.06]">
+            <div
+              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-teal/20 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative overflow-hidden rounded-2xl shadow-[var(--shadow-lift)] ring-1 ring-white/10">
               <img
                 src={image}
                 alt={imageAlt}
