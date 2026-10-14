@@ -54,6 +54,7 @@ export const siteConfig = {
   whatsappDisplay: CONTACT_WHATSAPP_DISPLAY,
   whatsappUrl: CONTACT_WHATSAPP_URL,
   brochureUrl: '/BuildNext360-Brochure.pdf',
+  constructionBrochureUrl: '/BuildNext360-Construction-Brochure.pdf',
   linkedinUrl: 'https://www.linkedin.com/company/buildnext360',
   facebookUrl: 'https://www.facebook.com/share/14qKzjwonEV/',
   seoKeywords:

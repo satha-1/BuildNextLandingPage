@@ -34,23 +34,39 @@ function upsertHreflang(hreflang: string, href: string) {
   el.href = href
 }
 
-export function Seo({ path }: { path: string }) {
-  const seo = routeSeo[path] ?? {
+export function Seo({
+  path,
+  title,
+  description,
+  keywords,
+}: {
+  path: string
+  title?: string
+  description?: string
+  keywords?: string
+}) {
+  const match = routeSeo[path] ?? {
     path,
     title: `${siteConfig.productName} | ${siteConfig.category}`,
     description: defaultDescription,
     keywords: siteConfig.seoKeywords,
   }
+  const seo = {
+    path: match.path,
+    title: title ?? match.title,
+    description: description ?? match.description,
+    keywords: keywords ?? match.keywords,
+  }
   const url = SITE_URL ? `${SITE_URL}${seo.path === '/' ? '' : seo.path}` : seo.path
   const image = SITE_URL ? `${SITE_URL}/og-cover.svg` : '/og-cover.svg'
-  const keywords = seo.keywords ?? siteConfig.seoKeywords
+  const keywordContent = seo.keywords ?? siteConfig.seoKeywords
 
   useEffect(() => {
     document.title = seo.title
     document.documentElement.lang = 'en'
 
     upsertMeta('meta[name="description"]', 'name', 'description', seo.description)
-    upsertMeta('meta[name="keywords"]', 'name', 'keywords', keywords)
+    upsertMeta('meta[name="keywords"]', 'name', 'keywords', keywordContent)
     upsertMeta('meta[name="author"]', 'name', 'author', siteConfig.company)
     upsertMeta(
       'meta[name="robots"]',
@@ -82,7 +98,7 @@ export function Seo({ path }: { path: string }) {
       upsertHreflang('en', url)
       upsertHreflang('x-default', url)
     }
-  }, [seo.title, seo.description, keywords, url, image])
+  }, [seo.title, seo.description, keywordContent, url, image])
 
   return null
 }

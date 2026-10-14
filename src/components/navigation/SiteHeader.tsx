@@ -50,7 +50,7 @@ export function SiteHeader() {
               end={'end' in link ? link.end : false}
               className={({ isActive }) =>
                 cn(
-                  'rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
+                  'rounded-lg px-2.5 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal lg:px-3.5',
                   isActive
                     ? 'bg-navy/[0.06] text-navy'
                     : 'text-muted hover:bg-navy/[0.04] hover:text-navy',

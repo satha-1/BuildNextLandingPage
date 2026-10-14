@@ -26,6 +26,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.buildnext360.com/news</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.buildnext360.com/news/ai-construction-vendor-marketplace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.buildnext360.com/news/crm-ai-agent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.buildnext360.com/news/bn360-intelligence</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.buildnext360.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

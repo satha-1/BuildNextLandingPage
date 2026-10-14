@@ -3,6 +3,7 @@ export const navLinks = [
   { to: '/lands', label: 'BuildNext Lands' },
   { to: '/construction', label: 'BuildNext Construction' },
   { to: '/services', label: 'Services' },
+  { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },
 ] as const
 
@@ -11,6 +12,7 @@ export const footerNav = [
   { to: '/lands', label: 'BuildNext Lands' },
   { to: '/construction', label: 'BuildNext Construction' },
   { to: '/services', label: 'Services' },
+  { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },
   { to: '/book-demo', label: 'Book a Demo' },
 ] as const

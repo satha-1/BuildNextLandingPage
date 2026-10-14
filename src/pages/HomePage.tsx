@@ -1,5 +1,5 @@
 import { Seo } from '../components/seo/Seo'
-import { FeatureShowcaseSection } from '../components/product/FeatureShowcase'
+import { PlatformExplorer } from '../components/product/PlatformExplorer'
 import {
   BusinessBenefitsSection,
   FinalCta,
@@ -17,7 +17,7 @@ export default function HomePage() {
       <IndustrySolutionsSection />
       <WhyIndustrySection />
       <ProductOverviewSection />
-      <FeatureShowcaseSection />
+      <PlatformExplorer />
       <BusinessBenefitsSection />
       <FinalCta />
     </>

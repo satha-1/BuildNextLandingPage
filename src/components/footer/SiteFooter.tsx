@@ -59,7 +59,11 @@ export function SiteFooter() {
             </ButtonLink>
             <ButtonLink to={siteConfig.brochureUrl} external newTab variant="secondary">
               <FileDown className="h-4 w-4" aria-hidden />
-              Brochure
+              Lands Brochure
+            </ButtonLink>
+            <ButtonLink to={siteConfig.constructionBrochureUrl} external newTab variant="secondary">
+              <FileDown className="h-4 w-4" aria-hidden />
+              Construction Brochure
             </ButtonLink>
           </div>
           <div className="mt-5 flex items-center gap-4 text-sm">

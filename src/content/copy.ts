@@ -173,6 +173,14 @@ export const routeSeo: Record<string, RouteSeo> = {
       'Contact the BuildNext360 team about land sales ERP, construction ERP, demos, implementation, chatbot, and product questions for property and construction businesses.',
     keywords: 'contact BuildNext360, land ERP support, construction ERP sales',
   },
+  '/news': {
+    path: '/news',
+    title: 'News and Updates | BuildNext360',
+    description:
+      'What BuildNext is building next: an AI construction vendor marketplace, a CRM agent on the customer file, and BN360 Intelligence.',
+    keywords:
+      'BuildNext360 news, AI construction marketplace, CRM AI agent, BN360 Intelligence',
+  },
   '/services': {
     path: '/services',
     title: 'Services | Implementation, Chatbot, Integrations & Support | BuildNext360',

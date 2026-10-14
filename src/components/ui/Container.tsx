@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 
 export function Container({
@@ -68,6 +68,20 @@ export function SectionHeading({
 export const sectionY = 'py-16 sm:py-20'
 export const sectionGap = 'mt-10 sm:mt-12'
 
+function usePrefersReducedMotion() {
+  const [reduce, setReduce] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReduce(media.matches)
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
+
+  return reduce
+}
+
 export function PageHero({
   eyebrow,
   title,
@@ -75,6 +89,8 @@ export function PageHero({
   children,
   image,
   imageAlt,
+  video,
+  videoLabel,
 }: {
   eyebrow: string
   title: string
@@ -82,7 +98,10 @@ export function PageHero({
   children?: ReactNode
   image: string
   imageAlt: string
+  video?: string
+  videoLabel?: string
 }) {
+  const reduceMotion = usePrefersReducedMotion()
   return (
     <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy">
       <div
@@ -106,14 +125,29 @@ export function PageHero({
               className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-teal/20 blur-3xl"
               aria-hidden
             />
-            <div className="relative overflow-hidden rounded-2xl shadow-[var(--shadow-lift)] ring-1 ring-white/10">
-              <img
-                src={image}
-                alt={imageAlt}
-                className="aspect-[4/3] h-auto w-full object-cover lg:aspect-[5/4]"
-                loading="eager"
-                decoding="async"
-              />
+            <div className="relative overflow-hidden rounded-2xl bg-midnight shadow-[var(--shadow-lift)] ring-1 ring-white/10">
+              {video ? (
+                <video
+                  className="aspect-video h-auto w-full bg-midnight object-contain"
+                  src={video}
+                  poster={image}
+                  controls
+                  autoPlay={!reduceMotion}
+                  muted
+                  loop
+                  playsInline
+                  preload={reduceMotion ? 'metadata' : 'auto'}
+                  aria-label={videoLabel ?? imageAlt}
+                />
+              ) : (
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  className="aspect-[4/3] h-auto w-full object-cover lg:aspect-[5/4]"
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
             </div>
           </div>
         </div>

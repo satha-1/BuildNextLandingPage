@@ -8,6 +8,8 @@ const ConstructionPage = lazy(() => import('../pages/ConstructionPage'))
 const BookDemoPage = lazy(() => import('../pages/BookDemoPage'))
 const ContactPage = lazy(() => import('../pages/ContactPage'))
 const ServicesPage = lazy(() => import('../pages/ServicesPage'))
+const NewsPage = lazy(() => import('../pages/NewsPage'))
+const NewsArticlePage = lazy(() => import('../pages/NewsArticlePage'))
 
 function Fallback() {
   return (
@@ -26,6 +28,8 @@ export function AppRoutes() {
           <Route path="lands" element={<LandsPage />} />
           <Route path="construction" element={<ConstructionPage />} />
           <Route path="services" element={<ServicesPage />} />
+          <Route path="news" element={<NewsPage />} />
+          <Route path="news/:slug" element={<NewsArticlePage />} />
           <Route path="book-demo" element={<BookDemoPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="platform" element={<Navigate to="/" replace />} />

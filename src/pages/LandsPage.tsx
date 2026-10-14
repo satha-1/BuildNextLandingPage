@@ -17,6 +17,8 @@ export default function LandsPage() {
         copy="Purpose-built software for land selling companies, property developers, and real estate businesses. Manage the full journey from inquiry to deed transfer on one connected platform."
         image={stockImages.landsProduct}
         imageAlt="Property development and land sales operations"
+        video="/videos/lands-intelligent-automation.mp4"
+        videoLabel="The future belongs to intelligent automation"
       >
         <div className="flex flex-wrap gap-3">
           <ButtonLink to="/book-demo">Book a Demo</ButtonLink>
