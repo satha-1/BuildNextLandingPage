@@ -10,6 +10,16 @@ export const stockImages = {
   propertyDevelopers: unsplash('photo-1545324418-cc1a3fa10c00', 800),
   landSales: unsplash('photo-1560518883-ce09059eeffa', 800),
   constructionIndustry: unsplash('photo-1504307651254-35680f356dfd', 800),
+  /** Wide photos for full-bleed banner sections. */
+  banners: {
+    about: unsplash('photo-1545324418-cc1a3fa10c00', 1920),
+    cta: unsplash('photo-1503387762-592deb58ef4e', 1920),
+    news: unsplash('photo-1581094794329-c8112a89af12', 1920),
+    lands: unsplash('photo-1600585154340-be6161a56a0c', 1920),
+    construction: unsplash('photo-1504307651254-35680f356dfd', 1920),
+    services: unsplash('photo-1552664730-d307ca884978', 1920),
+    contact: unsplash('photo-1486406146926-c627a92ad1ab', 1920),
+  },
   features: {
     pipeline: unsplash('photo-1556761175-b413da4baf72', 1200),
     inventory: unsplash('photo-1600585154340-be6161a56a0c', 1200),
@@ -45,6 +55,13 @@ export const productCards = [
     imageAlt: 'Modern property development and master planned community',
     href: '/lands',
     cta: 'Explore BuildNext Lands',
+    builtFor: 'Land sellers & developers',
+    specs: [
+      { icon: 'users', label: 'Leads, site visits & follow-ups' },
+      { icon: 'map', label: 'Plot inventory & reservations' },
+      { icon: 'wallet', label: 'Installments & collections' },
+      { icon: 'file', label: 'Agreements to deed transfer' },
+    ],
   },
   {
     id: 'construction',
@@ -56,6 +73,13 @@ export const productCards = [
     imageAlt: 'Active construction project with professional site operations',
     href: '/construction',
     cta: 'Explore BuildNext Construction',
+    builtFor: 'Contractors & project developers',
+    specs: [
+      { icon: 'plan', label: 'Project planning & budgets' },
+      { icon: 'package', label: 'Procurement & inventory' },
+      { icon: 'hardhat', label: 'Site progress & subcontractors' },
+      { icon: 'receipt', label: 'Cost control & progress billing' },
+    ],
   },
 ] as const
 

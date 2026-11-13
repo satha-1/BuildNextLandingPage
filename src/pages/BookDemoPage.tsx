@@ -2,7 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, type ReactNode } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button } from '../components/ui/Button'
-import { Container } from '../components/ui/Container'
+import { Container, PageHero } from '../components/ui/Container'
+import { stockImages } from '../content/homeContent'
 import { Seo } from '../components/seo/Seo'
 import { formOptions } from '../content/copy'
 import { siteConfig } from '../content/siteConfig'
@@ -77,26 +78,15 @@ export default function BookDemoPage() {
   return (
     <>
       <Seo path="/book-demo" />
-      <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy py-16 sm:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_100%_0%,rgb(13_148_136/20%),transparent)]"
-          aria-hidden
-        />
-        <Container className="relative max-w-3xl">
-          <span className="inline-flex rounded-full bg-teal/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-light">
-            Book a demo
-          </span>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl">
-            Let’s map BuildNext360 to your operation.
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
-            Tell us how your company manages sales, projects, contracts, collections, and site
-            operations. We will tailor the demonstration around your workflow.
-          </p>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Book a demo"
+        title="Let’s map BuildNext360 to your operation"
+        copy="Tell us how your company manages sales, projects, contracts, collections, and site operations. We will tailor the demonstration around your workflow."
+        image={stockImages.banners.cta}
+        watermark="Demo"
+      />
 
-      <section className="bg-surface py-12 sm:py-16">
+      <section className="relative z-10 -mt-14 pb-16 sm:-mt-20 sm:pb-20">
         <Container className="max-w-3xl">
           {done ? (
             <div className="surface-card p-10" role="status">

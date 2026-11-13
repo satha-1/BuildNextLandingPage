@@ -15,6 +15,61 @@ export function Container({
   )
 }
 
+/** Small uppercase label with a leading rule, used above headings. */
+export function Eyebrow({
+  children,
+  invert,
+  align = 'left',
+  className,
+}: {
+  children: ReactNode
+  invert?: boolean
+  align?: 'left' | 'center'
+  className?: string
+}) {
+  return (
+    <p
+      className={cn(
+        'flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] sm:text-xs',
+        align === 'center' && 'justify-center',
+        invert ? 'text-teal-light' : 'text-teal',
+        className,
+      )}
+    >
+      <span className="eyebrow-rule" aria-hidden />
+      {children}
+      {align === 'center' ? <span className="eyebrow-rule" aria-hidden /> : null}
+    </p>
+  )
+}
+
+/** Oversized faded word that sits behind a heading (Skyline "WHY?" / "FEATURED"). */
+export function GhostWord({
+  word,
+  invert,
+  outline,
+  className,
+}: {
+  word: string
+  invert?: boolean
+  outline?: boolean
+  className?: string
+}) {
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        'ghost-word absolute select-none',
+        invert && 'ghost-word--dark',
+        outline && 'ghost-word--outline',
+        className,
+      )}
+    >
+      {word}
+    </span>
+  )
+}
+
 export function SectionHeading({
   eyebrow,
   title,
@@ -22,6 +77,7 @@ export function SectionHeading({
   invert,
   className,
   align = 'left',
+  watermark,
 }: {
   eyebrow?: string
   title: string
@@ -29,46 +85,62 @@ export function SectionHeading({
   invert?: boolean
   className?: string
   align?: 'left' | 'center'
+  /** Large ghost word rendered behind the heading. */
+  watermark?: string
 }) {
   return (
-    <div className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
-      {eyebrow ? (
-        <span
+    <div
+      className={cn(
+        'relative max-w-3xl',
+        align === 'center' && 'mx-auto text-center',
+        watermark && 'pt-10 sm:pt-14',
+        className,
+      )}
+    >
+      {watermark ? (
+        <GhostWord
+          word={watermark}
+          invert={invert}
           className={cn(
-            'mb-4 inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]',
-            invert ? 'bg-white/10 text-teal-light' : 'bg-teal/[0.08] text-teal',
+            '-top-2 sm:-top-4',
+            align === 'center' ? 'left-1/2 -translate-x-1/2' : '-left-1 sm:-left-2',
+          )}
+        />
+      ) : null}
+      <div className="relative">
+        {eyebrow ? (
+          <Eyebrow invert={invert} align={align} className="mb-4">
+            {eyebrow}
+          </Eyebrow>
+        ) : null}
+        <h2
+          className={cn(
+            'font-display text-[1.75rem] font-extrabold uppercase leading-[1.08] tracking-tight sm:text-4xl lg:text-[2.75rem]',
+            invert ? 'text-white' : 'text-navy',
           )}
         >
-          {eyebrow}
-        </span>
-      ) : null}
-      <h2
-        className={cn(
-          'font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]',
-          invert ? 'text-white' : 'text-navy',
-        )}
-      >
-        {title}
-      </h2>
-      {copy ? (
-        <p
-          className={cn(
-            'mt-4 text-base leading-relaxed sm:text-lg',
-            align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-2xl',
-            invert ? 'text-white/75' : 'text-muted',
-          )}
-        >
-          {copy}
-        </p>
-      ) : null}
+          {title}
+        </h2>
+        {copy ? (
+          <p
+            className={cn(
+              'mt-5 text-base leading-relaxed sm:text-lg',
+              align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-2xl',
+              invert ? 'text-white/75' : 'text-muted',
+            )}
+          >
+            {copy}
+          </p>
+        ) : null}
+      </div>
     </div>
   )
 }
 
-export const sectionY = 'py-16 sm:py-20'
-export const sectionGap = 'mt-10 sm:mt-12'
+export const sectionY = 'py-20 sm:py-24'
+export const sectionGap = 'mt-12 sm:mt-14'
 
-function usePrefersReducedMotion() {
+export function usePrefersReducedMotion() {
   const [reduce, setReduce] = useState(false)
 
   useEffect(() => {
@@ -82,6 +154,11 @@ function usePrefersReducedMotion() {
   return reduce
 }
 
+/**
+ * Full-bleed photo banner hero used by every inner page.
+ * `overlap` renders a card that straddles the banner's bottom edge and the
+ * section below — the Skyline "connected sections" motif.
+ */
 export function PageHero({
   eyebrow,
   title,
@@ -89,70 +166,96 @@ export function PageHero({
   children,
   image,
   imageAlt,
-  video,
-  videoLabel,
+  watermark,
+  overlap,
 }: {
   eyebrow: string
   title: string
   copy: string
   children?: ReactNode
-  image: string
-  imageAlt: string
-  video?: string
-  videoLabel?: string
+  image?: string
+  imageAlt?: string
+  watermark?: string
+  overlap?: ReactNode
 }) {
-  const reduceMotion = usePrefersReducedMotion()
   return (
-    <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_90%_10%,rgb(13_148_136/25%),transparent)]"
-        aria-hidden
-      />
-      <Container className="relative py-16 sm:py-20">
-        <div className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="min-w-0">
-            <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
-              {eyebrow}
-            </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-[3.25rem]">
+    <>
+      <section className="relative isolate overflow-hidden bg-midnight">
+        {image ? (
+          <img
+            src={image}
+            alt={imageAlt ?? ''}
+            className="absolute inset-0 -z-20 h-full w-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        ) : null}
+        <div className="banner-shade absolute inset-0 -z-10" aria-hidden />
+        <div className="blueprint absolute inset-0 -z-10 opacity-60" aria-hidden />
+        {watermark ? (
+          <GhostWord
+            word={watermark}
+            invert
+            outline
+            className="-bottom-3 left-1/2 -z-10 -translate-x-1/2 sm:-bottom-6"
+          />
+        ) : null}
+
+        <Container className={cn('relative pt-32 sm:pt-40', overlap ? 'pb-36 sm:pb-44' : 'pb-20 sm:pb-28')}>
+          <div className="max-w-3xl">
+            <Eyebrow invert>{eyebrow}</Eyebrow>
+            <h1 className="mt-5 font-display text-[2.4rem] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
               {title}
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">{copy}</p>
-            {children ? <div className="mt-9">{children}</div> : null}
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">{copy}</p>
+            {children ? <div className="mt-10">{children}</div> : null}
           </div>
-          <div className="relative min-w-0">
-            <div
-              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-teal/20 blur-3xl"
-              aria-hidden
-            />
-            <div className="relative overflow-hidden rounded-2xl bg-midnight shadow-[var(--shadow-lift)] ring-1 ring-white/10">
-              {video ? (
-                <video
-                  className="aspect-video h-auto w-full bg-midnight object-contain"
-                  src={video}
-                  poster={image}
-                  controls
-                  autoPlay={!reduceMotion}
-                  muted
-                  loop
-                  playsInline
-                  preload={reduceMotion ? 'metadata' : 'auto'}
-                  aria-label={videoLabel ?? imageAlt}
-                />
-              ) : (
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  className="aspect-[4/3] h-auto w-full object-cover lg:aspect-[5/4]"
-                  loading="eager"
-                  decoding="async"
-                />
-              )}
-            </div>
-          </div>
+        </Container>
+      </section>
+
+      {overlap ? (
+        <div className="relative z-10 -mt-24 sm:-mt-32">
+          <Container>{overlap}</Container>
         </div>
-      </Container>
-    </section>
+      ) : null}
+    </>
+  )
+}
+
+/** Stat figures in Skyline's big-number style. */
+export function StatRow({
+  items,
+  invert,
+  className,
+}: {
+  items: readonly { value: string; label: string }[]
+  invert?: boolean
+  className?: string
+}) {
+  return (
+    <dl className={cn('grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4', className)}>
+      {items.map((item) => (
+        <div key={item.label} className="min-w-0">
+          <dt className="sr-only">{item.label}</dt>
+          <dd
+            className={cn(
+              'font-display text-4xl font-extrabold tracking-tight sm:text-5xl',
+              invert ? 'text-white' : 'text-navy',
+            )}
+          >
+            {item.value}
+          </dd>
+          <dd
+            className={cn(
+              'mt-2 text-[11px] font-bold uppercase tracking-[0.16em]',
+              invert ? 'text-white/60' : 'text-muted',
+            )}
+          >
+            {item.label}
+          </dd>
+        </div>
+      ))}
+    </dl>
   )
 }
 

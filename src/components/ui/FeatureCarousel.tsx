@@ -27,10 +27,14 @@ const featureIcons = {
 export function FeatureCarousel({
   features,
   ariaLabel = 'Main features',
+  layout = 'stacked',
 }: {
   features: MainFeature[]
   ariaLabel?: string
+  /** `split` puts the image beside the copy on large screens. */
+  layout?: 'stacked' | 'split'
 }) {
+  const split = layout === 'split'
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
@@ -119,16 +123,27 @@ export function FeatureCarousel({
     >
       <div
         key={animKey}
-        className={cn(!reducedMotion && 'animate-[feature-fade_420ms_ease-out]')}
+        className={cn(
+          !reducedMotion && 'animate-[feature-fade_420ms_ease-out]',
+          split && 'grid min-w-0 gap-4 lg:grid-cols-[1.35fr_1fr] lg:items-stretch lg:gap-6',
+        )}
       >
         <StockImage
           src={feature.image}
           alt={feature.imageAlt}
-          className="aspect-[16/10] w-full rounded-xl shadow-none ring-0"
+          className={cn(
+            'aspect-[16/10] w-full rounded-xl shadow-none ring-0',
+            split && 'lg:aspect-auto lg:h-full lg:min-h-[19rem]',
+          )}
           priority={index === 0}
         />
 
-        <div className="mt-3 rounded-xl border border-navy/[0.06] bg-navy/[0.015] p-4 sm:mt-4 sm:p-5">
+        <div
+          className={cn(
+            'rounded-xl border border-navy/[0.06] bg-navy/[0.015] p-4 sm:p-5',
+            split ? 'flex flex-col justify-between lg:border-0 lg:bg-transparent lg:p-2' : 'mt-3 sm:mt-4',
+          )}
+        >
           <div className="flex items-start gap-3">
             <div
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal/[0.12] text-teal"

@@ -1,8 +1,12 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { FinalCta } from '../components/product/HomeSections'
 import { StoryArt } from '../components/news/StoryArt'
 import { Seo } from '../components/seo/Seo'
-import { Container } from '../components/ui/Container'
+import { ButtonLink } from '../components/ui/Button'
+import { Container, PageHero, SectionHeading } from '../components/ui/Container'
+import { FadeIn, Stagger, StaggerItem } from '../components/ui/Motion'
+import { stockImages } from '../content/homeContent'
 import { newsArticles } from '../content/news'
 
 export default function NewsPage() {
@@ -11,80 +15,75 @@ export default function NewsPage() {
   return (
     <>
       <Seo path="/news" />
-      <section className="relative overflow-hidden border-b border-white/10 bg-navy">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_80%_0%,rgb(13_148_136/28%),transparent)]"
-          aria-hidden
-        />
-        <Container className="relative py-16 sm:py-20">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal-light">
-            News and updates
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-            What we are building next
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-            A vendor marketplace for construction buying, a CRM agent that reads the customer
-            file, and an intelligence layer for the Monday brief.
-          </p>
-        </Container>
-      </section>
-
-      <section className="bg-surface py-14 sm:py-16">
-        <Container>
-          {featured ? (
-            <article className="surface-card overflow-hidden lg:grid lg:grid-cols-2">
+      <PageHero
+        eyebrow="News and updates"
+        title="What we are building next"
+        copy="A vendor marketplace for construction buying, a CRM agent that reads the customer file, and an intelligence layer for the Monday brief."
+        image={stockImages.banners.news}
+        watermark="News"
+        overlap={
+          featured ? (
+            <article className="grid overflow-hidden rounded-[1.75rem] bg-white shadow-[0_40px_100px_-30px_rgb(6_13_24/55%)] ring-1 ring-navy/[0.06] lg:grid-cols-2">
               <StoryArt slug={featured.slug} className="min-h-72 lg:min-h-full" label={featured.title} />
               <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal">
+                <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-teal">
+                  <span className="rounded-full bg-teal px-2 py-0.5 text-[10px] text-white">Featured</span>
                   {featured.kicker}
                 </p>
-                <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-navy sm:text-4xl">
+                <h2 className="mt-4 font-display text-2xl font-extrabold uppercase leading-tight tracking-tight text-navy sm:text-3xl">
                   {featured.title}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted">{featured.dek}</p>
                 <p className="mt-4 text-sm text-navy/45">
                   {featured.date} · {featured.readTime}
                 </p>
-                <Link
-                  to={`/news/${featured.slug}`}
-                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-                >
+                <ButtonLink to={`/news/${featured.slug}`} variant="outline" arrow className="mt-8 w-fit">
                   Read article
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                </ButtonLink>
               </div>
             </article>
-          ) : null}
+          ) : null
+        }
+      />
 
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {rest.map((article) => (
-              <article key={article.slug} className="surface-card flex flex-col overflow-hidden">
-                <StoryArt slug={article.slug} className="h-56" label={article.title} />
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal">
-                    {article.kicker}
-                  </p>
-                  <h2 className="mt-3 font-display text-2xl font-semibold leading-snug text-navy">
-                    {article.title}
-                  </h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{article.dek}</p>
-                  <p className="mt-4 text-sm text-navy/45">
-                    {article.date} · {article.readTime}
-                  </p>
+      {rest.length > 0 ? (
+        <section className="overflow-hidden py-20 sm:py-24">
+          <Container>
+            <FadeIn>
+              <SectionHeading watermark="Latest" eyebrow="More updates" title="Also in the works" />
+            </FadeIn>
+            <Stagger className="mt-12 grid gap-8 md:grid-cols-2">
+              {rest.map((article) => (
+                <StaggerItem key={article.slug}>
                   <Link
                     to={`/news/${article.slug}`}
-                    className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-teal transition-colors hover:text-teal-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                    className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_20px_60px_-28px_rgb(10_22_40/35%)] ring-1 ring-navy/[0.06] transition-shadow hover:shadow-[0_30px_70px_-28px_rgb(10_22_40/45%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
                   >
-                    Read article
-                    <ArrowRight className="h-4 w-4" aria-hidden />
+                    <StoryArt slug={article.slug} className="h-56" label={article.title} />
+                    <div className="flex flex-1 flex-col p-7 sm:p-8">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal">{article.kicker}</p>
+                      <h2 className="mt-3 font-display text-xl font-extrabold uppercase leading-snug tracking-tight text-navy">
+                        {article.title}
+                      </h2>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{article.dek}</p>
+                      <div className="mt-6 flex items-center justify-between border-t border-navy/[0.06] pt-5">
+                        <p className="text-sm text-navy/45">
+                          {article.date} · {article.readTime}
+                        </p>
+                        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-navy/15 text-navy transition-colors group-hover:border-teal group-hover:bg-teal group-hover:text-white">
+                          <ArrowRight className="h-4 w-4" aria-hidden />
+                        </span>
+                      </div>
+                    </div>
                   </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Container>
+        </section>
+      ) : null}
+
+      <FinalCta from="surface" />
     </>
   )
 }
