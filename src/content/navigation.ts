@@ -1,7 +1,11 @@
+export const productLinks = [
+  { to: '/lands', label: 'BuildNext Lands', description: 'Land sales ERP & CRM' },
+  { to: '/construction', label: 'BuildNext Construction', description: 'Construction ERP & CRM' },
+] as const
+
 export const navLinks = [
   { to: '/', label: 'Home', end: true },
-  { to: '/lands', label: 'BuildNext Lands' },
-  { to: '/construction', label: 'BuildNext Construction' },
+  { label: 'Products', children: productLinks },
   { to: '/services', label: 'Services' },
   { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },

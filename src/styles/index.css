@@ -103,6 +103,69 @@ h3,
   background: linear-gradient(to bottom, var(--color-surface) 0%, #fff 100%);
 }
 
+/* ------------------------------------------------------------------
+   Banner system (Skyline-style): full-bleed photo bands, ghost
+   watermark words behind headings, and media that breaks across
+   section edges so the page reads as one connected surface.
+------------------------------------------------------------------- */
+
+/* Giant watermark word that sits behind a section heading. */
+.ghost-word {
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  font-size: clamp(4.5rem, 15vw, 13rem);
+  color: transparent;
+  background-image: linear-gradient(to bottom, rgb(10 22 40 / 9%) 0%, rgb(10 22 40 / 0%) 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.ghost-word--dark {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 13%) 0%, rgb(255 255 255 / 0%) 90%);
+}
+
+/* Outlined variant — used on photo banners (like Skyline's "VIRTUAL"). */
+.ghost-word--outline {
+  background-image: none;
+  -webkit-text-stroke: 1.5px rgb(255 255 255 / 22%);
+}
+
+/* Dark overlay that keeps banner copy legible over any photo. */
+.banner-shade {
+  background:
+    linear-gradient(90deg, rgb(6 13 24 / 92%) 0%, rgb(6 13 24 / 72%) 45%, rgb(6 13 24 / 35%) 100%),
+    linear-gradient(to top, rgb(6 13 24 / 85%) 0%, transparent 45%);
+}
+
+.banner-shade-center {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 50%, rgb(6 13 24 / 55%), rgb(6 13 24 / 88%)),
+    linear-gradient(to top, rgb(6 13 24 / 90%), transparent 50%);
+}
+
+/* Short accent rule used before eyebrows. */
+.eyebrow-rule {
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+/* Blueprint grid texture for dark bands. */
+.blueprint {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 @keyframes feature-fade {
   from {
     opacity: 0;

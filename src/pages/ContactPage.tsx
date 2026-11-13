@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { Seo } from '../components/seo/Seo'
 import { Button, ButtonLink } from '../components/ui/Button'
-import { Container } from '../components/ui/Container'
+import { Container, PageHero } from '../components/ui/Container'
+import { stockImages } from '../content/homeContent'
 import { WhatsAppIcon } from '../components/ui/WhatsAppIcon'
 import { contactHeroHighlights, contactTopics } from '../content/contact'
 import { siteConfig } from '../content/siteConfig'
@@ -85,48 +86,41 @@ export default function ContactPage() {
     <>
       <Seo path="/contact" />
 
-      <section className="relative overflow-hidden border-b border-navy/[0.06] bg-navy py-16 sm:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_90%_10%,rgb(13_148_136/22%),transparent)]"
-          aria-hidden
-        />
-        <Container className="relative">
-          <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-            <div className="min-w-0">
-              <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
-                Contact {siteConfig.productName}
-              </span>
-              <h1 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-[1.1] text-white sm:text-5xl">
-                Speak with the BuildNext360 team.
-              </h1>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
-                Product fit, demos, implementation, or commercial questions — reach us by form,
-                email, phone, or WhatsApp and we will guide the next step.
-              </p>
-            </div>
-
-            <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {contactHeroHighlights.map((item) => {
-                const Icon = heroIcons[item.icon]
-                return (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal/20 text-teal-light">
-                      <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-                    </div>
-                    <h2 className="mt-4 font-display text-lg font-semibold text-white">{item.title}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-white/65">{item.description}</p>
+      <PageHero
+        eyebrow={`Contact ${siteConfig.productName}`}
+        title="Speak with the BuildNext360 team"
+        copy="Product fit, demos, implementation, or commercial questions — reach us by form, email, phone, or WhatsApp and we will guide the next step."
+        image={stockImages.banners.contact}
+        watermark="Contact"
+        overlap={
+          <div className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-[0_40px_100px_-30px_rgb(6_13_24/55%)] ring-1 ring-navy/[0.06] md:grid-cols-2">
+            {contactHeroHighlights.map((item, index) => {
+              const Icon = heroIcons[item.icon]
+              return (
+                <div
+                  key={item.id}
+                  className={cn(
+                    'flex items-start gap-5 p-7 sm:p-8',
+                    index > 0 && 'border-t border-navy/[0.06] md:border-l md:border-t-0',
+                  )}
+                >
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal text-white">
+                    <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  <div>
+                    <h2 className="font-display text-base font-extrabold uppercase tracking-tight text-navy">
+                      {item.title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
                   </div>
-                )
-              })}
-            </div>
+                </div>
+              )
+            })}
           </div>
-        </Container>
-      </section>
+        }
+      />
 
-      <section className="bg-surface py-12 sm:py-16">
+      <section className="bg-surface py-14 sm:py-20">
         <Container>
           <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
             <div className="surface-card min-w-0 p-7 sm:p-9">

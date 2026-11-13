@@ -2,7 +2,8 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { StoryArt } from '../components/news/StoryArt'
 import { Seo } from '../components/seo/Seo'
-import { Container } from '../components/ui/Container'
+import { FinalCta } from '../components/product/HomeSections'
+import { Container, Eyebrow, GhostWord } from '../components/ui/Container'
 import { getNewsArticle, newsArticles, type NewsBlock } from '../content/news'
 
 function Block({ block }: { block: NewsBlock }) {
@@ -49,37 +50,41 @@ export default function NewsArticlePage() {
         keywords={`${article.title}, BuildNext360, ${article.kicker}`}
       />
       <article>
-        <header className="relative overflow-hidden border-b border-white/10 bg-navy">
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_0%,rgb(13_148_136/30%),transparent)]"
-            aria-hidden
-          />
-          <Container className="relative py-12 sm:py-16">
-            <Link
-              to="/news"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-light"
-            >
-              <ArrowLeft className="h-4 w-4" aria-hidden />
-              News and updates
-            </Link>
-            <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-teal-light">
-              {article.kicker}
-            </p>
-            <h1 className="mt-4 max-w-4xl font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl">
-              {article.title}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">{article.dek}</p>
-            <p className="mt-6 text-sm text-white/45">
-              <time dateTime={article.dateIso}>{article.date}</time>
-              <span aria-hidden> · </span>
-              {article.readTime}
-            </p>
-          </Container>
-          <Container className="relative pb-12 sm:pb-16">
+        <header>
+          <div className="relative isolate overflow-hidden bg-midnight">
+            <div className="blueprint absolute inset-0 -z-10" aria-hidden />
+            <div
+              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_100%_0%,rgb(13_148_136/30%),transparent)]"
+              aria-hidden
+            />
+            <GhostWord word="Update" invert outline className="-bottom-4 right-0 -z-10" />
+            <Container className="relative pb-48 pt-32 sm:pb-56 sm:pt-40">
+              <Link
+                to="/news"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white/70 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-light"
+              >
+                <ArrowLeft className="h-4 w-4" aria-hidden />
+                News and updates
+              </Link>
+              <Eyebrow invert className="mt-8">
+                {article.kicker}
+              </Eyebrow>
+              <h1 className="mt-5 max-w-4xl font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-5xl">
+                {article.title}
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">{article.dek}</p>
+              <p className="mt-6 text-sm text-white/45">
+                <time dateTime={article.dateIso}>{article.date}</time>
+                <span aria-hidden> · </span>
+                {article.readTime}
+              </p>
+            </Container>
+          </div>
+          <Container className="relative z-10 -mt-36 sm:-mt-44">
             <StoryArt
               slug={article.slug}
               label={article.title}
-              className="min-h-[22rem] overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:min-h-[26rem]"
+              className="min-h-[22rem] overflow-hidden rounded-[1.75rem] shadow-[0_40px_100px_-30px_rgb(6_13_24/55%)] ring-1 ring-white/10 sm:min-h-[26rem]"
             />
           </Container>
         </header>
@@ -123,6 +128,7 @@ export default function NewsArticlePage() {
           </aside>
         </Container>
       </article>
+      <FinalCta from="surface" />
     </>
   )
 }
